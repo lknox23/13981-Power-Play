@@ -11,10 +11,13 @@ import org.firstinspires.ftc.teamcode.shplib.commands.CommandScheduler;
 public class CommandBasedAuto extends BaseRobot {
     @Override
     public void start() {
+
+        /*
         CommandScheduler.getInstance().scheduleCommand(
                 new MoveArmCommand(arm, MoveArmCommand.Direction.TOP)
                         .then(new DumpCargoCommand(scoop))
                         .then(new MoveArmCommand(arm, MoveArmCommand.Direction.BOTTOM))
         );
+         */
     }
 }

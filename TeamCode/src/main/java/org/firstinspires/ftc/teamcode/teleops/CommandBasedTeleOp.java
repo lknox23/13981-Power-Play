@@ -16,12 +16,6 @@ public class CommandBasedTeleOp extends BaseRobot {
     public void init() {
         super.init();
 
-        // Default command runs when no other commands are scheduled for the subsystem
-//        drive.setDefaultCommand(
-//                new RunCommand(
-//                        () -> drive.mecanum(gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x)
-//                )
-//        );
     }
 
     @Override
@@ -35,27 +29,7 @@ public class CommandBasedTeleOp extends BaseRobot {
     public void loop() {
         // Allows CommandScheduler.run() to be called - DO NOT DELETE!
         super.loop();
+        drive.mecanum(gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
 
-//        new Trigger(gamepad1.dpad_up, new MoveArmCommand(arm, MoveArmCommand.Direction.UP));
-//        new Trigger(gamepad1.dpad_down, new MoveArmCommand(arm, MoveArmCommand.Direction.DOWN));
-//        new Trigger(gamepad1.b && !arm.atBottom(), new DumpCargoCommand(scoop));
-//
-//        // Dump cargo macro
-//        new Trigger(gamepad1.a,
-//                new RunCommand((() -> {
-//                    scoop.setState(ScoopSubsystem.State.MIDDLE);
-//                }), scoop)
-//                        .then(new MoveArmCommand(arm, MoveArmCommand.Direction.TOP))
-//                        .then(new DumpCargoCommand(scoop))
-//                        .then(new MoveArmCommand(arm, MoveArmCommand.Direction.MIDDLE))
-//                        .then(new MoveArmCommand(arm, MoveArmCommand.Direction.BOTTOM))
-//        );
-//
-//        intake.setPower(gamepad1.left_trigger - gamepad1.right_trigger);
-        if (gamepad1.a) {
-            claw.setPower(0.5);
-        } else if (gamepad1.b){
-            claw.setPower(-0.5);
-        } else claw.setPower(0.0);
     }
 }

@@ -28,15 +28,15 @@ import org.firstinspires.ftc.teamcode.subsystems.VisionSubsystem;
 public class BaseRobot extends OpMode {
     // Declare subsystems and devices
     public DriveSubsystem drive;
-    public VisionSubsystem vision;
-    public ArmSubsystem arm;
-    public ScoopSubsystem scoop;
+    //public VisionSubsystem vision;
+    //public ArmSubsystem arm;
+    //public ScoopSubsystem scoop;
 
-    public SHPMotor intake;
+    //public SHPMotor intake;
 
-    public CRServo claw;
+    //public CRServo claw;
 
-    public double previousTime = 0;
+    //public double previousTime = 0;
 
     // Called when you press the init button
     @Override
@@ -48,13 +48,13 @@ public class BaseRobot extends OpMode {
         CommandScheduler.getInstance().setTelemetry(telemetry);
 
         // Initialize your subsystems and devices
-//        drive = new DriveSubsystem(hardwareMap);
-        vision = new VisionSubsystem(hardwareMap);
+        drive = new DriveSubsystem(hardwareMap);
+        //vision = new VisionSubsystem(hardwareMap);
 //        arm = new ArmSubsystem(hardwareMap);
 //        scoop = new ScoopSubsystem(hardwareMap);
 //        intake = new SHPMotor(hardwareMap, "intake");
 
-        claw = hardwareMap.get(CRServo.class, "claw");
+        //claw = hardwareMap.get(CRServo.class, "claw");
     }
 
     // Called when you press the start button
@@ -66,8 +66,8 @@ public class BaseRobot extends OpMode {
     // Called repeatedly while an OpMode is running
     @Override
     public void loop() {
-        telemetry.addData("Loop Time (ms): ", Clock.elapsed(previousTime) * 1000);
-        previousTime = Clock.now();
+//        telemetry.addData("Loop Time (ms): ", Clock.elapsed(previousTime) * 1000);
+        //previousTime = Clock.now();
 
         // Handles all subsystem and command execution - DO NOT DELETE!
         try {

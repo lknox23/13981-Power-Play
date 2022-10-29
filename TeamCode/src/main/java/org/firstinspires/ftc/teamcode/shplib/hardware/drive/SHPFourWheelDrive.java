@@ -18,8 +18,9 @@ public class SHPFourWheelDrive {
         for (int i = 0; i < motors.length; i++) {
             motors[i] = new SHPMotor(hardwareMap, motorNames[i]);
         }
-        motors[0].setDirection(DcMotorSimple.Direction.REVERSE);
+        //motors[0].setDirection(DcMotorSimple.Direction.REVERSE);
         motors[1].setDirection(DcMotorSimple.Direction.REVERSE);
+        motors[2].setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     public void enablePositionPID(double kP) {
