@@ -17,6 +17,11 @@ public final class Constants {
         };
 
         public static final double kDriveP = 25;
+
+        //ticks/s^
+        public static final double vMax = 30;
+        //ticks/s
+        public static final double aMax = 30;
     }
 
     public static final class Vision {
