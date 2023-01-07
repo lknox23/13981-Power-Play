@@ -15,6 +15,7 @@ public class DriveSubsystem extends Subsystem {
 //    private final RRMecanumDrive rr;
     private final SHPMecanumDrive drive;
     private final SHPIMU imu;
+    double correction;
 
     public DriveSubsystem(HardwareMap hardwareMap) {
 //        rr = new RRMecanumDrive(hardwareMap, Constants.Drive.kMotorNames);
@@ -29,7 +30,7 @@ public class DriveSubsystem extends Subsystem {
         Vector2d vector = new Vector2d(
                 leftY,
                 leftX
-        ).rotated(-imu.getYaw());
+        ).rotated(-imu.getYaw()-correction);
 
         drive.mecanum(vector.getX(), vector.getY(), rightX); // field oriented
 //        drive.mecanum(leftY, leftX, rightX); // robot oriented
@@ -38,5 +39,9 @@ public class DriveSubsystem extends Subsystem {
     @Override
     public void periodic(Telemetry telemetry) {
 
+    }
+
+    public void resetOrientation() {
+        correction = imu.getYaw();
     }
 }

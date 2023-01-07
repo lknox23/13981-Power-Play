@@ -1,3 +1,4 @@
+/*
 package org.firstinspires.ftc.teamcode.autos;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -30,3 +31,5 @@ public class MotionProfileAuto extends BaseRobot {
         motor.setPower(follower.calculate(profile.getVelocity(Clock.elapsed(time))));
     }
 }
+
+ */

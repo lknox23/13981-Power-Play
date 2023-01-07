@@ -9,7 +9,7 @@ import org.firstinspires.ftc.teamcode.shplib.hardware.SHPMotor;
 import org.firstinspires.ftc.teamcode.shplib.utility.Clock;
 import org.firstinspires.ftc.teamcode.subsystems.ArmSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
-import org.firstinspires.ftc.teamcode.subsystems.ScoopSubsystem;
+import org.firstinspires.ftc.teamcode.subsystems.ClawSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.VisionSubsystem;
 
 /**
@@ -28,13 +28,9 @@ import org.firstinspires.ftc.teamcode.subsystems.VisionSubsystem;
 public class BaseRobot extends OpMode {
     // Declare subsystems and devices
     public DriveSubsystem drive;
-    //public VisionSubsystem vision;
-    //public ArmSubsystem arm;
-    //public ScoopSubsystem scoop;
-
-    //public SHPMotor intake;
-
-    //public CRServo claw;
+    public VisionSubsystem vision;
+    public ArmSubsystem arm;
+    public ClawSubsystem claw;
 
     //public double previousTime = 0;
 
@@ -49,12 +45,9 @@ public class BaseRobot extends OpMode {
 
         // Initialize your subsystems and devices
         drive = new DriveSubsystem(hardwareMap);
-        //vision = new VisionSubsystem(hardwareMap);
-//        arm = new ArmSubsystem(hardwareMap);
-//        scoop = new ScoopSubsystem(hardwareMap);
-//        intake = new SHPMotor(hardwareMap, "intake");
-
-        //claw = hardwareMap.get(CRServo.class, "claw");
+        vision = new VisionSubsystem(hardwareMap);
+        arm = new ArmSubsystem(hardwareMap);
+        claw = new ClawSubsystem(hardwareMap);
     }
 
     // Called when you press the start button
