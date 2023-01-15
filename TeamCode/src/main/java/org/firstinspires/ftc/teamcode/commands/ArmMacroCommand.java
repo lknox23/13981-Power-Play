@@ -11,9 +11,11 @@ public class ArmMacroCommand extends Command {
     private final ClawSubsystem claw;
     private final Direction direction;
     private double startTime;
+    //private double stackHeight = 300;
+    //private final double stackIncrement = 50;
 
     public enum Direction {
-        UP, DOWN
+        UP, DOWN, STACK
     }
 
     public ArmMacroCommand(ArmSubsystem arm, ClawSubsystem claw, Direction direction) {
@@ -29,27 +31,27 @@ public class ArmMacroCommand extends Command {
     @Override
     public void init() {
         startTime = Clock.now();
-        if (direction == Direction.UP) {
-            arm.setState(ArmSubsystem.State.TOP);
+        if (direction == Direction.UP)
             claw.setState(ClawSubsystem.State.CLOSED);
-        }
-        else {
-            arm.setState(ArmSubsystem.State.BOTTOM);
+        else
             claw.setState(ClawSubsystem.State.OPEN);
-        }
-
     }
 
     // Called repeatedly until isFinished() returns true
     @Override
     public void execute() {
-
+        if (Clock.hasElapsed(startTime, 1)) {
+            if (direction == Direction.UP)
+                arm.setState(ArmSubsystem.State.TOP);
+            else
+                arm.setState(ArmSubsystem.State.BOTTOM);
+        }
     }
 
     // Specifies whether or not the command has finished
     // Returning true causes execute() to be called once
     @Override
     public boolean isFinished() {
-        return arm.atSetpoint() && Clock.hasElapsed(startTime, 0.5);
+        return arm.atSetpoint() && Clock.hasElapsed(startTime, 1);
     }
 }

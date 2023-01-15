@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.BaseRobot;
 import org.firstinspires.ftc.teamcode.Constants;
+import org.firstinspires.ftc.teamcode.commands.ArmMacroCommand;
 import org.firstinspires.ftc.teamcode.commands.MoveArmCommand;
 import org.firstinspires.ftc.teamcode.commands.MoveClawCommand;
 import org.firstinspires.ftc.teamcode.shplib.commands.ParallelCommandGroup;
@@ -33,7 +34,7 @@ public class CommandBasedTeleOp extends BaseRobot {
     public void loop() {
         // Allows CommandScheduler.run() to be called - DO NOT DELETE!
         super.loop();
-        drive.mecanum(-gamepad1.left_stick_y*0.5, -gamepad1.left_stick_x*0.5, gamepad1.right_stick_x*0.5);
+        drive.mecanum(-gamepad1.left_stick_y*0.5, -gamepad1.left_stick_x*0.5, -gamepad1.right_stick_x*0.5);
         new Trigger(gamepad1.dpad_up, new RunCommand(()->{arm.setManual(300);}));
         new Trigger(gamepad1.dpad_down, new RunCommand(()->{arm.setManual(-300);}));
         /*
@@ -81,8 +82,8 @@ public class CommandBasedTeleOp extends BaseRobot {
 
         );
          */
-        new Trigger(gamepad1.a, new MoveArmCommand(arm, MoveArmCommand.Direction.TOP));
-        new Trigger(gamepad1.b, new MoveArmCommand(arm, MoveArmCommand.Direction.BOTTOM));
+        new Trigger(gamepad1.a, new ArmMacroCommand(arm, claw, ArmMacroCommand.Direction.UP));
+        new Trigger(gamepad1.b, new ArmMacroCommand(arm, claw, ArmMacroCommand.Direction.DOWN));
         new Trigger(gamepad1.left_bumper, new MoveClawCommand(claw, MoveClawCommand.Direction.OPEN));
         new Trigger(gamepad1.right_bumper, new MoveClawCommand(claw, MoveClawCommand.Direction.CLOSED));
 
